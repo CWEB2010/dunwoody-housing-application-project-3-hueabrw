@@ -24,5 +24,10 @@ namespace Project_Three_GUI
         {
             InitializeComponent();
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

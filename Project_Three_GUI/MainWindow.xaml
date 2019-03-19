@@ -5,8 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Dunwoody Housing" Height="684" Width="1128.8"
+        Icon="DunwoodyLogo.jpg"
+        WindowState="Maximized"
+        WindowStyle="None"
+        BorderThickness="1"
+        BorderBrush="#FFAC182E">
+    <DockPanel>
+        <DockPanel.Background>
+            <ImageBrush ImageSource="DunwoodyCampus.jpg" Stretch="UniformToFill"/>
+        </DockPanel.Background>
+
+        <StackPanel DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="500">
+
+            <StackPanel.Background>
+                <SolidColorBrush Color="White"/>
+            </StackPanel.Background>
+            <StackPanel DockPanel.Dock="Top">
+                <Button Width="50" Height="50" HorizontalAlignment="Right" Margin="10,10,10,100" Background="#FFAC182E" Foreground="White" Content="X" FontSize="26" FontWeight="Bold" x:Name="ExitButton" Click="ExitButton_Click"/>
+            </StackPanel>
+            <TextBox BorderThickness="0" Height="100" Text="Dunwoody Housing Manager" TextAlignment="Center" FontSize="30" Foreground="#FFAC182E"/>
+            <Image Width="300" Source="Dunwoody_Name.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,10,0"/>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,50,10,0"  Height="150" Width="300">
+                <TextBox HorizontalAlignment="Center" Height="30" Margin="0,0,0,10" TextWrapping="Wrap" Text="Username" FontSize="18" Width="300"/>
+                <PasswordBox HorizontalAlignment="Center" Height="30" Margin="0,0,0,10" Password="password" VerticalAlignment="Top" FontSize="18" Width="300"/>
+                <Button Content="Login" HorizontalAlignment="Center" Margin="0,0,0,10" VerticalAlignment="Top" Width="300" Height="70" FontSize="26" Background="#FFAC182E" Foreground="White"/>
+
+            </StackPanel>
+
+        </StackPanel>
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.8" Color="DarkRed" />
+            </Grid.Background>
+        </Grid>
+    </DockPanel>
 </Window>

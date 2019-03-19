@@ -94,5 +94,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DunwoodyLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Dunwoody_Name.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DunwoodyLogoWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DunwoodyCampus.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
