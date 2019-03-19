@@ -8,12 +8,25 @@
         Title="SelectionWindow" Height="450" Width="800"
         WindowState="Maximized"
         WindowStyle="None">
+    <Window.Resources>
+        <Style x:Key="DunwoodyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontSize" Value="11px"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FFAE1F31"/>
+            <EventSetter Event="MouseEnter" Handler="MouseEnterHandler"/>
+        </Style>
+    </Window.Resources>
     <DockPanel>
-        <DockPanel  DockPanel.Dock="Top" Background="#FFAC182E" Height="100">
+        <DockPanel  DockPanel.Dock="Top" Background="#FFAE1F31" Height="100">
+            <Image Source="Dunwoody_Name.jpg"/>
+            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton"/>
+            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="SEARCH" FontWeight="Bold" BorderThickness="0" x:Name="SearchButton"/>
+            
             <Button FontSize="26" FontWeight="Bold" BorderBrush="DarkRed" Content="X" Width="50" Height="50" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="ExitButton" Click="ExitButton_Click"/>
         </DockPanel>
-        <Grid>
-            
-        </Grid>
+        <DockPanel>
+        </DockPanel>
     </DockPanel>
 </Window>

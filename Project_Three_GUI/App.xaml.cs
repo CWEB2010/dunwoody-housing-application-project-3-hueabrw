@@ -13,5 +13,6 @@ namespace Project_Three_GUI
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }
