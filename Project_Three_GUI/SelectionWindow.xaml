@@ -6,22 +6,83 @@
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
         Title="SelectionWindow" Height="450" Width="800"
-        WindowState="Maximized"
+        WindowState="Normal"
         WindowStyle="None">
     <Window.Resources>
+        
         <Style x:Key="DunwoodyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="FontSize" Value="11px"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#FFAE1F31"/>
-            <EventSetter Event="MouseEnter" Handler="MouseEnterHandler"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Width="{TemplateBinding Width}"   
+                              Height="{TemplateBinding Height}" ClipToBounds="True">
+
+                            <Rectangle
+                                x:Name="DunwoodyRect" HorizontalAlignment="Stretch"  
+                                        VerticalAlignment="Stretch"  
+                                        StrokeThickness="2" 
+                                        RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush x:Name="ButtonBrush" Color="#FFAE1F31"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <DockPanel Name="myContentPresenterDockPanel">
+                                <ContentPresenter x:Name="myContentPresenter"
+                                                  Content="{TemplateBinding Content}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" >
+                                </ContentPresenter>
+                            </DockPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            
+                            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBrush"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="White"
+                                                            FillBehavior="HoldEnd"
+                                                            Duration="0:0:0.5"/>
+                                            <ColorAnimation Storyboard.TargetName="myContentPresenter"
+                                                            Storyboard.TargetProperty="(TextBlock.Foreground)"
+                                                            To="#FFAE1F31"
+                                                            FillBehavior="Stop"
+                                                            Duration="0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBrush"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FFAE1F31"
+                                                            FillBehavior="Stop"
+                                                            Duration="0:0:1"/>
+                                            <ColorAnimation Storyboard.TargetName="ButtonBrush"
+                                                            Storyboard.TargetProperty="Color"
+                                                            To="#FFAE1F31"
+                                                            FillBehavior="Stop"
+                                                            Duration="0:0:1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <DockPanel>
         <DockPanel  DockPanel.Dock="Top" Background="#FFAE1F31" Height="100">
             <Image Source="Dunwoody_Name.jpg"/>
-            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton"/>
+            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton" Click="NewResidentButton_Click"/>
             <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="SEARCH" FontWeight="Bold" BorderThickness="0" x:Name="SearchButton"/>
             
             <Button FontSize="26" FontWeight="Bold" BorderBrush="DarkRed" Content="X" Width="50" Height="50" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="ExitButton" Click="ExitButton_Click"/>

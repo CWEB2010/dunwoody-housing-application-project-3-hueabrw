@@ -35,5 +35,10 @@ namespace Project_Three_GUI
         {
             this.Close();
         }
+
+        private void NewResidentButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("button clicked!");
+        }
     }
 }

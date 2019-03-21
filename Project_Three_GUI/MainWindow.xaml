@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Dunwoody Housing" Height="684" Width="1128.8"
         Icon="DunwoodyLogo.jpg"
-        WindowState="Maximized"
+        WindowState="Normal"
         WindowStyle="None"
         BorderThickness="1"
         BorderBrush="#FFAC182E">
