@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
         Title="SelectionWindow" Height="450" Width="800"
-        WindowState="Normal"
+        WindowState="Maximized"
         WindowStyle="None">
     <Window.Resources>
         
-        <Style x:Key="DunwoodyButton" TargetType="Button">
+        <Style x:Key="DunwoodyButton" TargetType="RadioButton">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
                         <Grid Width="{TemplateBinding Width}"   
                               Height="{TemplateBinding Height}" ClipToBounds="True">
 
@@ -31,7 +31,11 @@
                                 <ContentPresenter x:Name="myContentPresenter"
                                                   Content="{TemplateBinding Content}"
                                                   HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center" >
+                                                  VerticalAlignment="Center" 
+                                                  >
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush x:Name="TextBrush" Color="White"/>
+                                    </TextBlock.Foreground>
                                 </ContentPresenter>
                             </DockPanel>
                         </Grid>
@@ -45,12 +49,12 @@
                                                             Storyboard.TargetProperty="Color"
                                                             To="White"
                                                             FillBehavior="HoldEnd"
-                                                            Duration="0:0:0.5"/>
-                                            <ColorAnimation Storyboard.TargetName="myContentPresenter"
-                                                            Storyboard.TargetProperty="(TextBlock.Foreground)"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="TextBrush"
+                                                            Storyboard.TargetProperty="Color"
                                                             To="#FFAE1F31"
-                                                            FillBehavior="Stop"
-                                                            Duration="0:0:0.5"/>
+                                                            FillBehavior="HoldEnd"
+                                                            Duration="0:0:0.3"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger.Actions>
@@ -63,16 +67,20 @@
                                                             Storyboard.TargetProperty="Color"
                                                             To="#FFAE1F31"
                                                             FillBehavior="Stop"
-                                                            Duration="0:0:1"/>
-                                            <ColorAnimation Storyboard.TargetName="ButtonBrush"
+                                                            Duration="0:0:0.3"/>
+                                            <ColorAnimation Storyboard.TargetName="TextBrush"
                                                             Storyboard.TargetProperty="Color"
-                                                            To="#FFAE1F31"
+                                                            To="White"
                                                             FillBehavior="Stop"
-                                                            Duration="0:0:1"/>
+                                                            Duration="0:0:0.3"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger.Actions>
+
                             </EventTrigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Rectangle.Fill" Value="White"/>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -80,14 +88,24 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-        <DockPanel  DockPanel.Dock="Top" Background="#FFAE1F31" Height="100">
-            <Image Source="Dunwoody_Name.jpg"/>
-            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton" Click="NewResidentButton_Click"/>
-            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="SEARCH" FontWeight="Bold" BorderThickness="0" x:Name="SearchButton"/>
+        <DockPanel  DockPanel.Dock="Top" Background="#FFAE1F31" Height="150">
+            <Image Source="Dunwoody_Name.jpg" Width="300"/>
             
-            <Button FontSize="26" FontWeight="Bold" BorderBrush="DarkRed" Content="X" Width="50" Height="50" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="ExitButton" Click="ExitButton_Click"/>
+            <RadioButton Style="{StaticResource DunwoodyButton}" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton" Click="NewResidentButton_Click" Checked="NewResidentButton_Checked"/>
+            <RadioButton Style="{StaticResource DunwoodyButton}" Width="200" Content="SEARCH" FontWeight="Bold" BorderThickness="0" x:Name="SearchButton"/>
+            
+            <Button FontSize="12" FontWeight="Bold" BorderBrush="DarkRed" Background="{StaticResource DunwoodyRed}" Foreground="White" Content="X" Width="25" Height="25" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="ExitButton" Click="ExitButton_Click"/>
         </DockPanel>
-        <DockPanel>
-        </DockPanel>
+        <Grid SnapsToDevicePixels="True">
+            <Grid.Background>
+                <ImageBrush ImageSource="university.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Grid  Background="DarkRed" Opacity="0.8" />
+            <Rectangle Margin="300,0,300,0" Visibility="Hidden" x:Name="NewResidentDock">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="White"/>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
     </DockPanel>
 </Window>

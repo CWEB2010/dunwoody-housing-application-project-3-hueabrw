@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Dunwoody Housing" Height="684" Width="1128.8"
         Icon="DunwoodyLogo.jpg"
-        WindowState="Normal"
+        WindowState="Maximized"
         WindowStyle="None"
         BorderThickness="1"
         BorderBrush="#FFAC182E">
@@ -22,7 +22,7 @@
                 <SolidColorBrush Color="White"/>
             </StackPanel.Background>
             <StackPanel DockPanel.Dock="Top">
-                <Button Width="50" Height="50" HorizontalAlignment="Right" Margin="10,10,10,100" Background="#FFAC182E" Foreground="White" Content="X" FontSize="26" FontWeight="Bold" x:Name="ExitButton" Click="ExitButton_Click"/>
+                <Button Width="25" Height="25" HorizontalAlignment="Right" Margin="10,10,10,100" Background="#FFAC182E" Foreground="White" Content="X" FontSize="12" FontWeight="Bold" x:Name="ExitButton" Click="ExitButton_Click"/>
             </StackPanel>
             <TextBox IsReadOnly="True" BorderThickness="0" Height="100" Text="Dunwoody Housing Manager" TextAlignment="Center" FontSize="30" Foreground="#FFAC182E"/>
             <Image Width="300" Source="Dunwoody_Name.jpg" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,10,0"/>

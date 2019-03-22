@@ -38,7 +38,14 @@ namespace Project_Three_GUI
 
         private void NewResidentButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("button clicked!");
+            NewResidentDock.Visibility = Visibility.Visible;
+            NewResidentButton.Background = Brushes.White;
+            NewResidentButton.Foreground = Brushes.DarkRed;
+        }
+
+        private void NewResidentButton_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
