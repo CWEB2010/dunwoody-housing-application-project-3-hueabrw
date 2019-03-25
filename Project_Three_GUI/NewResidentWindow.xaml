@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
-        Title="NewResidentWindow" Height="450" Width="800"
+        Title="NewResidentWindow" Height="677.213" Width="1171.803"
         WindowState="Maximized"
         WindowStyle="None">
     <Window.Resources>
@@ -105,16 +105,24 @@
                 </Rectangle.Fill>
             </Rectangle>
             <DockPanel Margin="300,00,300,00">
-                <DockPanel DockPanel.Dock="Top" Margin="0,200,0,0" Height="100">
-                    <ComboBox DockPanel.Dock="Left" Margin="100,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="studentTypeBox" SelectionChanged="StudentTypeBox_SelectionChanged" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-                    <TextBox DockPanel.Dock="Left" Margin="50,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="First Name" x:Name="firstNameBox"/>
-                    <TextBox DockPanel.Dock="Right" Margin="0,0,100,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Last Name" x:Name="lastNameBox"/>
-                </DockPanel>
-                <DockPanel DockPanel.Dock="Bottom" Margin="0,0,0,200" Height="100">
-                    <ComboBox DockPanel.Dock="Left" Margin="100,0,100,0" Width="100" Height="30" FontSize="18" VerticalAlignment="Center" Text="Floor"/>
-                    <ComboBox DockPanel.Dock="Left" Margin="50,0,100,0" Width="100" Height="30" FontSize="18" VerticalAlignment="Center" Text="Room"/>
-                    <TextBox DockPanel.Dock="Right" Margin="0,0,100,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Hours Worked"/>
-                </DockPanel>
+                <Grid DockPanel.Dock="Top" Margin="0,150,0,0" Height="100">
+                    <ComboBox Margin="0,0,500,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="studentTypeBox" SelectionChanged="StudentTypeBox_SelectionChanged" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                    <TextBox Margin="0,0,500,75" BorderThickness="0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Student Type" IsReadOnly="True"/>
+                    <TextBox  Margin="0,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="firstNameBox" TextChanged="FirstNameBox_TextChanged"/>
+                    <TextBox Margin="0,0,0,75" BorderThickness="0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="First Name" IsReadOnly="True"/>
+                    <TextBox  Margin="500,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="lastNameBox" TextChanged="LastNameBox_TextChanged"/>
+                    <TextBox Margin="500,0,0,75" BorderThickness="0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Last Name" IsReadOnly="True"/>
+                </Grid>
+                <Grid DockPanel.Dock="Top" Margin="0,0,0,0" Height="300">
+                    <ComboBox Margin="0,0,600,0" Width="100" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="floorNumebrBox" SelectionChanged="FloorNumebrBox_SelectionChanged"/>
+                    <TextBox Margin="0,0,500,75" BorderThickness="0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Floor Number" IsReadOnly="True"/>
+                    <ComboBox Margin="0,0,100,0" Width="100" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="roomNumberBox" SelectionChanged="RoomNumberBox_SelectionChanged"/>
+                    <TextBox Margin="0,0,0,75" BorderThickness="0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Room Number" IsReadOnly="True"/>
+                    <TextBox Margin="500,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" IsEnabled="False" x:Name="MonthlyHoursBox" TextChanged="MonthlyHoursBox_TextChanged"/>
+                    <TextBox Margin="500,0,0,75" BorderThickness="0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Monthly Hours" Foreground="Gray" IsReadOnly="True" x:Name="MonthlyHoursText"/>
+                    <Button Margin="500,250,0,0" Background="{StaticResource DunwoodyRed}" Foreground="White" Width="200" Height="40" FontSize="18" Content="Add Resident" IsEnabled="False" x:Name="AddResidentButton" Click="AddResidentButton_Click"/>
+                </Grid>
+
             </DockPanel>
         </Grid>
     </DockPanel>
