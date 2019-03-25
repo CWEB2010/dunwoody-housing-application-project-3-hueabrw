@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace Project_Three_GUI
 {
@@ -23,6 +24,22 @@ namespace Project_Three_GUI
         public NewResidentWindow()
         {
             InitializeComponent();
+            List<ScholarshipStudent> students = LoadData();
+            List<string> types = new List<string> { "Student Worker", "Student Athlete", "Scholarship Student" };
+            this.studentTypeBox.ItemsSource = types;
+        }
+
+        private List<ScholarshipStudent> LoadData()
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<List<ScholarshipStudent>>(File.ReadAllText(@"StudentData.json"));
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return null;
+            }
         }
 
         private void NewResidentButton_Click(object sender, RoutedEventArgs e)
@@ -40,6 +57,11 @@ namespace Project_Three_GUI
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void StudentTypeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

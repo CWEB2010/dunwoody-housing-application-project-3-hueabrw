@@ -104,6 +104,9 @@
                     <SolidColorBrush Color="White"/>
                 </Rectangle.Fill>
             </Rectangle>
+            <DockPanel Margin="300,0,300,0">
+                <ComboBox Width="200" Height="30" FontSize="18" x:Name="studentTypeBox" SelectionChanged="StudentTypeBox_SelectionChanged" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+            </DockPanel>
         </Grid>
     </DockPanel>
 </Window>
