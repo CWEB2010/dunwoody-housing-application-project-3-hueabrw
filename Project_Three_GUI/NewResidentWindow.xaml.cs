@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.ObjectModel;
 
 namespace Project_Three_GUI
 {
@@ -21,26 +22,38 @@ namespace Project_Three_GUI
     /// </summary>
     public partial class NewResidentWindow : Window
     {
-        List<StudentResident> students;
+        ObservableCollection<StudentResident> students;
+        List<int[]> floorNumberList;
+        List<int[]> roomNumberList;
         public NewResidentWindow()
         {
             InitializeComponent();
             students = LoadData();
             List<string> types = new List<string> { "Student Worker", "Student Athlete", "Scholarship Student" };
             this.studentTypeBox.ItemsSource = types;
-            this.floorNumebrBox.ItemsSource = new List<int> { 1,2,3};
-            this.roomNumberBox.ItemsSource = new List<int> { 1, 2, 3 };
+            floorNumberList =  new List<int[]> { new int[] {1,2,3}
+                                                ,new int[] {4,5,6}
+                                                ,new int[] {7,8} };
+            roomNumberList = new List<int[]> { new int[] {1,2,3,4,5,6,7,8,9,10}
+                                                ,new int[] {1,2,3,4,5,6,7,8,9,10}
+                                                ,new int[] {1,2,3,4,5,6,7,8,9,10}};
         }
 
-        private List<StudentResident> LoadData()
+        private ObservableCollection<StudentResident> LoadData()
         {
             try
             {
-                return JsonConvert.DeserializeObject<List<StudentResident>>(File.ReadAllText(@"StudentData.json"));
+                var jsonSerializerSettings = new JsonSerializerSettings()
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
+                string jsonData = File.ReadAllText(@"../../StudentData.json");
+                return JsonConvert.DeserializeObject<ObservableCollection<StudentResident>>(jsonData,jsonSerializerSettings);
             }
             catch(Exception e)
             {
-                return null;
+                MessageBox.Show("Creating new list of students");
+                return new ObservableCollection<StudentResident>();
             }
         }
 
@@ -73,32 +86,55 @@ namespace Project_Three_GUI
                 this.MonthlyHoursBox.IsEnabled = false;
                 this.MonthlyHoursText.Foreground = Brushes.Gray;
             }
+
+            floorNumebrBox.ItemsSource = floorNumberList[studentTypeBox.SelectedIndex];
+            roomNumberBox.ItemsSource = roomNumberList[studentTypeBox.SelectedIndex];
+
+            floorNumebrBox.IsEnabled = true;
+            roomNumberBox.IsEnabled = true;
+
             SetButton();
         }
 
         private void AddResidentButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Made it");
+            int currentID;
+            try
+            {
+                currentID = students.Count() + 1;
+            }
+            catch
+            {
+                currentID = 1;
+            }
+
             if (studentTypeBox.SelectedItem.ToString() == "Student Worker")
             {
-                this.students.Add(new StudentWorker(students.Count().ToString(), this.firstNameBox.Text, this.lastNameBox.Text, (int)this.roomNumberBox.SelectedItem, (int)this.floorNumebrBox.SelectedItem, Convert.ToInt32(this.MonthlyHoursBox.Text)));
+                this.students.Add(new StudentWorker(currentID.ToString("D4"), this.firstNameBox.Text, this.lastNameBox.Text, Convert.ToInt32(this.roomNumberBox.SelectedItem.ToString()), Convert.ToInt32(this.floorNumebrBox.SelectedItem.ToString()), Convert.ToInt32(this.MonthlyHoursBox.Text)));
             }
             else if (studentTypeBox.SelectedItem.ToString() == "Student Athlete")
             {
-                this.students.Add(new StudentAthlete(students.Count().ToString(), this.firstNameBox.Text, this.lastNameBox.Text, (int)this.roomNumberBox.SelectedItem, (int)this.floorNumebrBox.SelectedItem));
+                this.students.Add(new StudentAthlete(currentID.ToString("D4"), this.firstNameBox.Text, this.lastNameBox.Text, Convert.ToInt32(this.roomNumberBox.SelectedItem.ToString()), Convert.ToInt32(this.floorNumebrBox.SelectedItem.ToString())));
             }
             else if (studentTypeBox.SelectedItem.ToString() == "Scholarship Student")
             {
-                this.students.Add(new ScholarshipStudent("0", this.firstNameBox.Text, this.lastNameBox.Text, Convert.ToInt32(this.roomNumberBox.SelectedItem.ToString()), Convert.ToInt32(this.floorNumebrBox.SelectedItem.ToString())));
+                this.students.Add(new ScholarshipStudent(currentID.ToString("D4"), this.firstNameBox.Text, this.lastNameBox.Text, Convert.ToInt32(this.roomNumberBox.SelectedItem.ToString()), Convert.ToInt32(this.floorNumebrBox.SelectedItem.ToString())));
             }
             SaveData();
         }
 
         private void SaveData()
         {
-            string jsonData = JsonConvert.SerializeObject(students);
-            
-            System.IO.File.WriteAllText(@"StudentData.json", jsonData);
+            var jsonSerializerSettings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+            string jsonData = JsonConvert.SerializeObject(this.students,jsonSerializerSettings);
+
+            System.IO.File.WriteAllText(@"../../StudentData.json", jsonData);
+
+            SelectionWindow selectionWindow = new SelectionWindow();
+            selectionWindow.Show();
             this.Close();
         }
 

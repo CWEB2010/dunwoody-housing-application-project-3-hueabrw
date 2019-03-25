@@ -8,14 +8,14 @@ namespace Project_Three_GUI
 {
     abstract class StudentResident
     {
-        protected string idNum;
-        protected string firstName;
-        protected string lastName;
-        protected int[] floorRange;
-        protected int roomNumber;
-        protected int floorNumber;
-        protected double rentFee;
-        protected string stundetType;
+        public string idNum { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public int[] floorRange { get; set; }
+        public int roomNumber { get; set; }
+        public int floorNumber { get; set; }
+        public double rentFee { get; set; }
+        public string stundetType { get; set; }
 
     }
 

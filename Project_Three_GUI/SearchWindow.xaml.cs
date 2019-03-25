@@ -11,6 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
+using System.Data;
+using System.Collections.ObjectModel;
 
 namespace Project_Three_GUI
 {
@@ -19,9 +23,40 @@ namespace Project_Three_GUI
     /// </summary>
     public partial class SearchWindow : Window
     {
+        ObservableCollection<StudentResident> students;
         public SearchWindow()
         {
             InitializeComponent();
+            DataContext = this;
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                var jsonSerializerSettings = new JsonSerializerSettings()
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
+                string jsonData = File.ReadAllText(@"../../StudentData.json");
+
+                students = JsonConvert.DeserializeObject<ObservableCollection<StudentResident>>(jsonData, jsonSerializerSettings);
+                
+                PopulateTable();
+                
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+
+        }
+
+        private void PopulateTable()
+        {
+            StudentTable.ItemsSource = students;
         }
 
         private void NewResidentButton_Click(object sender, RoutedEventArgs e)
@@ -39,5 +74,11 @@ namespace Project_Three_GUI
         {
             this.Close();
         }
+    }
+    class User
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        
     }
 }
