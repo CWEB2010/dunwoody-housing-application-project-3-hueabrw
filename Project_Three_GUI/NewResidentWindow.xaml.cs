@@ -37,7 +37,6 @@ namespace Project_Three_GUI
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.ToString());
                 return null;
             }
         }

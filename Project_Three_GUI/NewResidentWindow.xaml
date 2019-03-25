@@ -94,7 +94,7 @@
 
             <Button FontSize="12" FontWeight="Bold" BorderBrush="DarkRed" Background="{StaticResource DunwoodyRed}" Foreground="White" Content="X" Width="25" Height="25" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="ExitButton" Click="ExitButton_Click"/>
         </DockPanel>
-        <Grid SnapsToDevicePixels="True">
+        <Grid>
             <Grid.Background>
                 <ImageBrush ImageSource="university.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
@@ -104,8 +104,17 @@
                     <SolidColorBrush Color="White"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <DockPanel Margin="300,0,300,0">
-                <ComboBox Width="200" Height="30" FontSize="18" x:Name="studentTypeBox" SelectionChanged="StudentTypeBox_SelectionChanged" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+            <DockPanel Margin="300,00,300,00">
+                <DockPanel DockPanel.Dock="Top" Margin="0,200,0,0" Height="100">
+                    <ComboBox DockPanel.Dock="Left" Margin="100,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" x:Name="studentTypeBox" SelectionChanged="StudentTypeBox_SelectionChanged" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                    <TextBox DockPanel.Dock="Left" Margin="50,0,0,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="First Name" x:Name="firstNameBox"/>
+                    <TextBox DockPanel.Dock="Right" Margin="0,0,100,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Last Name" x:Name="lastNameBox"/>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Bottom" Margin="0,0,0,200" Height="100">
+                    <ComboBox DockPanel.Dock="Left" Margin="100,0,100,0" Width="100" Height="30" FontSize="18" VerticalAlignment="Center" Text="Floor"/>
+                    <ComboBox DockPanel.Dock="Left" Margin="50,0,100,0" Width="100" Height="30" FontSize="18" VerticalAlignment="Center" Text="Room"/>
+                    <TextBox DockPanel.Dock="Right" Margin="0,0,100,0" Width="200" Height="30" FontSize="18" VerticalAlignment="Center" Text="Hours Worked"/>
+                </DockPanel>
             </DockPanel>
         </Grid>
     </DockPanel>
