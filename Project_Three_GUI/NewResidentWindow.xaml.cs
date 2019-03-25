@@ -11,44 +11,34 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
 
 namespace Project_Three_GUI
 {
     /// <summary>
-    /// Interaction logic for SelectionWindow.xaml
+    /// Interaction logic for NewResidentWindow.xaml
     /// </summary>
-    public partial class SelectionWindow : Window
+    public partial class NewResidentWindow : Window
     {
-        public SelectionWindow()
+        public NewResidentWindow()
         {
             InitializeComponent();
         }
 
-        private void MouseEnterHandler(object sender, RoutedEventArgs e)
-        {
-            var button = e.OriginalSource as Button;
-            button.Background = Brushes.White;
-            button.Foreground = Brushes.DarkRed;
-        }
-
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void NewResidentButton_Click(object sender, RoutedEventArgs e)
         {
-            NewResidentWindow newResidentWindow = new NewResidentWindow();
-            newResidentWindow.Show();
-            this.Close();
+            return;
         }
-        
-        
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             SearchWindow searchWindow = new SearchWindow();
             searchWindow.Show();
+            this.Close();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

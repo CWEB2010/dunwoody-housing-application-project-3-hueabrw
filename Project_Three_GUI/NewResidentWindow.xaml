@@ -1,15 +1,15 @@
-﻿<Window x:Class="Project_Three_GUI.SelectionWindow"
+﻿<Window x:Class="Project_Three_GUI.NewResidentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
-        Title="SelectionWindow" Height="450" Width="800"
+        Title="NewResidentWindow" Height="450" Width="800"
         WindowState="Maximized"
         WindowStyle="None">
     <Window.Resources>
-        
+
         <Style x:Key="DunwoodyButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Template">
@@ -40,7 +40,7 @@
                             </DockPanel>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            
+
                             <EventTrigger RoutedEvent="Mouse.MouseEnter">
                                 <EventTrigger.Actions>
                                     <BeginStoryboard>
@@ -78,7 +78,7 @@
                                 </EventTrigger.Actions>
 
                             </EventTrigger>
-                            
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -88,10 +88,10 @@
     <DockPanel>
         <DockPanel  DockPanel.Dock="Top" Background="#FFAE1F31" Height="150">
             <Image Source="Dunwoody_Name.jpg" Width="300"/>
-            
-            <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton" Click="NewResidentButton_Click"/>
+
+            <Button Background="White" Foreground="{StaticResource DunwoodyRed}" IsEnabled="False" Width="200" Content="NEW RESIDENT" FontWeight="Bold" BorderThickness="0" x:Name="NewResidentButton" Click="NewResidentButton_Click"/>
             <Button Style="{StaticResource DunwoodyButton}" Width="200" Content="SEARCH" FontWeight="Bold" BorderThickness="0" x:Name="SearchButton" Click="SearchButton_Click" />
-            
+
             <Button FontSize="12" FontWeight="Bold" BorderBrush="DarkRed" Background="{StaticResource DunwoodyRed}" Foreground="White" Content="X" Width="25" Height="25" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Right" x:Name="ExitButton" Click="ExitButton_Click"/>
         </DockPanel>
         <Grid SnapsToDevicePixels="True">
@@ -99,19 +99,11 @@
                 <ImageBrush ImageSource="university.jpg" Stretch="UniformToFill"/>
             </Grid.Background>
             <Grid  Background="DarkRed" Opacity="0.8" />
-            <Rectangle Margin="300,50,300,50" x:Name="NewResidentDock">
+            <Rectangle Margin="300,0,300,0" x:Name="NewResidentDock">
                 <Rectangle.Fill>
                     <SolidColorBrush Color="White"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,300" Text="WELCOME" FontSize="75" Foreground="{StaticResource DunwoodyRed}"/>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Text="Please select one of the following selections:" FontSize="16" />
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,80,0,0" FontSize="16" >
-                <Hyperlink Click="NewResidentButton_Click">New Resident</Hyperlink>
-            </TextBlock>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,130,0,0" FontSize="16" >
-                <Hyperlink Click="SearchButton_Click">Search</Hyperlink>
-            </TextBlock>
         </Grid>
     </DockPanel>
 </Window>
