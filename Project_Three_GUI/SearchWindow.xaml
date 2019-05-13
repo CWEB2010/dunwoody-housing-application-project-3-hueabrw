@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Project_Three_GUI"
         xmlns:data="clr-namespace:System.Data;assembly=System.Data"
         mc:Ignorable="d"
-        Title="SearchWindow" Height="450" Width="800"
+        Title="SearchWindow" Height="636.107" Width="1255.773"
         WindowState="Maximized"
         WindowStyle="None">
     <Window.Resources>
@@ -105,13 +105,49 @@
                     <SolidColorBrush Color="White"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <DockPanel Margin="300,0,300,0">
-                <Grid DockPanel.Dock="Top" Height="150">
-                    <TextBox Width="200" Height="30" Margin="0,100,400,0" FontSize="18"/>
-                    <Button Width="100" Height="30" Margin="500,100,0,0" Content="Search" FontSize="18"/>
-                </Grid>
-                <DataGrid DockPanel.Dock="Top" Margin="0,0,0,0" x:Name="StudentTable" Height="200" Width="600"/>
-            </DockPanel>
+            <StackPanel Margin="300,0,300,0">
+                <StackPanel Orientation="Horizontal" Margin="0,200,0,0">
+                    <TextBox Width="200" Height="30" Margin="75,0,0,0" FontSize="18" x:Name="SearchText" Text="Search" TextChanged="SearchText_TextChanged" Foreground="LightGray" FontStyle="Italic"  GotFocus="SearchText_GotFocus" LostFocus="SearchText_LostFocus"/>
+                    <RadioButton Margin="50,0,0,0" x:Name="IDSearch" GroupName="SearchCust" Content="Search by ID" />
+                    <RadioButton Margin="50,0,0,0" x:Name="NameSearch" GroupName="SearchCust" Content="Search by name"/>
+                </StackPanel>
+                <DataGrid x:Name="StudentTable" ColumnWidth="*" CanUserReorderColumns="False" SelectionMode="Single" AlternatingRowBackground="LightBlue" Margin="0,30,0,0"  AutoGenerateColumns="False" Height="200" Width="800" FontSize="12" IsReadOnly="True" CanUserResizeColumns="False" SelectionChanged="StudentTable_SelectionChanged" Sorting="DataGrid_Sorting">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding idNum}"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding firstName}"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding lastName}"/>
+                        <DataGridTextColumn Header="Floor Numer" Binding="{Binding floorNumber}"/>
+                        <DataGridTextColumn Header="Room Number" Binding="{Binding roomNumber}"/>
+                        <DataGridTextColumn Header="Rent Fee" Binding="{Binding rentFee}"/>
+                        <DataGridTextColumn Header="Student Type" Binding="{Binding stundetType}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DockPanel Width="800" Margin="0,25,0,0" Background="LightGray">
+                    <TextBox BorderThickness="0" Background="LightSlateGray"  DockPanel.Dock="Top" Text="Relevant Data:"/>
+                    <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                        <StackPanel Width="400">
+
+                            <TextBlock Text="Worker Students: " x:Name="WorkerCountText"/>
+                            <TextBlock Text="Athlete Students: " x:Name="AthleteCountText"/>
+                            <TextBlock Text="Scholarship Students: " x:Name="ScholarshipCountText"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="200">
+
+                            <TextBlock Text="Floor 1: " x:Name="FirstFloorText"/>
+                            <TextBlock Text="Floor 2: " x:Name="SecondFloorText"/>
+                            <TextBlock Text="Floor 3: " x:Name="ThirdFloorText"/>
+                            <TextBlock Text="Floor 4: " x:Name="FouthFloorText"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="200" >
+                            <TextBlock Text="Floor 5: " x:Name="FifthFlorrText"/>
+                            <TextBlock Text="Floor 6: " x:Name="SixthFloorText"/>
+                            <TextBlock Text="Floor 7: " x:Name="SeventhFloorText"/>
+                            <TextBlock Text="Floor 8: " x:Name="EighthFloorText"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DockPanel>
+                <Button x:Name="removeRes" Margin="500,30,0,0" Height="30" Width="100" IsEnabled="False" Content="Remove Resident" Background="{StaticResource DunwoodyRed}" Foreground="White" Click="RemoveRes_Click"/>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

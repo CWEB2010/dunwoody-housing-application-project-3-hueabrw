@@ -152,12 +152,26 @@ namespace Project_Three_GUI
 
         private void FirstNameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SetButton();
+            try
+            {
+                SetButton();
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void LastNameBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SetButton();
+            try
+            {
+                SetButton();
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private void FloorNumebrBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

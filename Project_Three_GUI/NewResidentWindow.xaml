@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Three_GUI"
         mc:Ignorable="d"
-        Title="NewResidentWindow" Height="677.213" Width="1171.803"
+        Title="NewResidentWindow" Height="974.813" Width="1715.403"
         WindowState="Maximized"
         WindowStyle="None">
     <Window.Resources>

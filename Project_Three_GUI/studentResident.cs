@@ -39,7 +39,7 @@ namespace Project_Three_GUI
 
         private double calculateRent(int hoursWorked)
         {
-            double fee = 1245 + ((hoursWorked * WAGE) / 2);
+            double fee = 1245 - ((hoursWorked * WAGE) / 2);
             return fee;
         }
     }
@@ -77,5 +77,6 @@ namespace Project_Three_GUI
         }
 
     }
+    
 
 }
