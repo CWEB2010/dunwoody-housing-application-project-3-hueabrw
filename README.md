@@ -1,5 +1,13 @@
 # Dunwoody Housing Application (Project 3)
 
+## To view run this project:
+
+1. Download .zip file
+2. Extract content to desired directory
+3. Run the shortcut with the Dunwoody logo labeled "Dunwoody Housing" 
+
+## Below is the project Description
+
 Create a GUI application that allows a Resident Director to create new residents and look-up current residents who reside in the newly constructed Dunwoody residence hall.   Each resident can be searched by their Id number, and for each resident their first and last name is recorded along with their dorm room number, monthly rent/fee and floor they reside on.  Residents include student workers, scholarship recipients and athletes.  Each resident is responsible for paying monthly rent/fee.  Scholarship recipients pay a flat boarding fee of $100 monthly, student athletes pay $1200 monthly and student workers’ pay $1245 a month minus half of their monthly student worker pay (which is calculated by taking the monthly hours worked * base hourly rate).  The base hourly rate for a student worker is $14.00.  There are 8 floors, student worker only reside on floors 1- 3, student athletes reside on floors 4 – 6 and scholarship residents reside on floors 7 and 8.
 
 #### The GUI application will consist of four or five tabs.
