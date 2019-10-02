@@ -5,7 +5,7 @@
 1. Download .zip file
 2. Extract content to desired directory
 3. Run the shortcut with the Dunwoody logo labeled "Dunwoody Housing" 
-    note: Running this file will give you a security prompt asking if you trust the application - just click yes to view the application.
+    * note: Running this file will give you a security prompt asking if you trust the application - just click yes to view the application.
 
 ## Below is the project Description
 
